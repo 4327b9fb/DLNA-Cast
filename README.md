@@ -30,28 +30,32 @@ dependencyResolutionManagement {
 **2. 添加依赖**
 
 ```groovy
-implementation 'com.github.4327b9fb.DLNA-Cast:dmc:v1.0.0'
-implementation 'com.github.4327b9fb.DLNA-Cast:dmr:v1.0.0'
-implementation 'com.github.4327b9fb.DLNA-Cast:dms:v1.0.0'
+implementation 'com.github.4327b9fb.DLNA-Cast:dmc:v3.0.0'
+implementation 'com.github.4327b9fb.DLNA-Cast:dmr:v3.0.0'
+implementation 'com.github.4327b9fb.DLNA-Cast:dms:v3.0.0'
 ```
 
 ---
 
 ## 传输层
 
-DMC/DMR/DMS 默认依赖 `transport-jetty`，开箱即用。
+DMC/DMR/DMS 默认依赖 `transport-jetty`，开箱即用。实际 minSdk 由所选传输层决定：使用默认 jetty 时为 26，切换 transport 后以对应模块为准。
 
-> **注意：Jetty 9 要求 Android API 26+。** 如需支持更低 API，请切换 OkHttp 传输栈。
+| 传输层 | minSdk | 说明 |
+|-------|--------|------|
+| `transport-jetty` | 26 | 默认，Android 8.0+ |
+| `transport-okhttp3` | 21 | Android 5.0+ |
+| `transport-okhttp4` | 24 | Android 7.0+ |
 
 **切换方式：**
 
 ```groovy
-implementation('com.github.4327b9fb.DLNA-Cast:dmc:v1.0.0') {
+implementation('com.github.4327b9fb.DLNA-Cast:dmc:v3.0.0') {
     exclude module: 'transport-jetty'
 }
-implementation 'com.github.4327b9fb.DLNA-Cast:transport-okhttp3:v1.0.0'
+implementation 'com.github.4327b9fb.DLNA-Cast:transport-okhttp3:v3.0.0'
 // 或
-implementation 'com.github.4327b9fb.DLNA-Cast:transport-okhttp4:v1.0.0'
+implementation 'com.github.4327b9fb.DLNA-Cast:transport-okhttp4:v3.0.0'
 ```
 
 也可以实现 `TransportFactory` 接口自定义传输层，并在 `META-INF/services/` 下注册。
