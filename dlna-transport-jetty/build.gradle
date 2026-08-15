@@ -1,0 +1,41 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'maven-publish'
+}
+
+android {
+    namespace 'com.android.cast.dlna.transport.jetty'
+    compileSdk 33
+    defaultConfig {
+        minSdk 26
+        targetSdk 33
+        consumerProguardFiles "consumer-rules.pro"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    api(project(':dlna-core'))
+
+    // Jetty — required by jUPnP's Jetty transport at runtime
+    // (jUPnP bundles the transport classes but NOT the Jetty library itself)
+    // Version must match jUPnP 3.0.5's jetty.version: 9.4.53.v20231009
+    api 'org.eclipse.jetty:jetty-client:9.4.53.v20231009'
+    api 'org.eclipse.jetty:jetty-server:9.4.53.v20231009'
+    api 'org.eclipse.jetty:jetty-servlet:9.4.53.v20231009'
+    // WARNING: Jetty 9 uses MethodHandle which requires Android API 26+
+}
+
+apply from: './publish.gradle'

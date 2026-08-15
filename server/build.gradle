@@ -1,0 +1,45 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    namespace 'com.android.cast.dlna.demo.server'
+    compileSdk 33
+    defaultConfig {
+        applicationId "com.android.cast.dlna.demo.server"
+        minSdk 26
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    packagingOptions {
+        resources {
+            excludes += ['META-INF/beans.xml']
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
+
+    implementation 'com.guolindev.permissionx:permissionx:1.7.1'
+
+    implementation project(':dlna-dms')
+
+    // Logback (for SLF4J/jUPnP logging configuration)
+    implementation 'uk.uuid.slf4j:slf4j-android:2.0.17-0'
+}

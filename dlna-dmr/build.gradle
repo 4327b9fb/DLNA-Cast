@@ -1,0 +1,40 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'maven-publish'
+}
+
+android {
+    namespace 'com.android.cast.dlna.dmr'
+    compileSdk 33
+    defaultConfig {
+        minSdk 24
+        targetSdk 33
+        consumerProguardFiles "consumer-rules.pro"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+
+    api(project(':dlna-core'))
+
+    // Transport — switch by changing this single dependency:
+    //   api(project(':dlna-transport-jetty'))    // Jetty HttpClient, API 26+ / JVM
+    //   api(project(':dlna-transport-okhttp3'))  // OkHttp 3.12.x, API 14+
+    //   api(project(':dlna-transport-okhttp4'))  // OkHttp 4.x/5.x, API 21+
+    api(project(':dlna-transport-jetty'))
+}
+
+apply from: './publish.gradle'

@@ -1,0 +1,12 @@
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = GROUP
+                artifactId = 'transport-jetty'
+                version = VERSION
+            }
+        }
+    }
+}

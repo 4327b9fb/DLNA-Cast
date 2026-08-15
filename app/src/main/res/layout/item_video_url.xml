@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:selectableItemBackground"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/video_url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="middle"
+        android:gravity="bottom"
+        android:lines="2"
+        android:maxLines="2"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:textColor="#000000"
+        android:textSize="11dp"
+        android:textStyle="italic"
+        tools:ignore="SpUsage"
+        tools:text="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" />
+
+    <TextView
+        android:id="@+id/video_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="middle"
+        android:gravity="top"
+        android:lines="2"
+        android:maxLines="2"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:textColor="#000000"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        tools:ignore="SpUsage"
+        tools:text="1分钟的视频, mp4格式" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#888888" />
+
+</LinearLayout>

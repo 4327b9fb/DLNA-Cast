@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#000000">
+
+    <VideoView
+        android:id="@+id/video_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="H, 16:9"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/video_cast_control"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#000000"
+        app:layout_constraintBottom_toBottomOf="@id/video_view"
+        app:layout_constraintLeft_toLeftOf="@id/video_view"
+        app:layout_constraintRight_toRightOf="@id/video_view"
+        app:layout_constraintTop_toTopOf="@id/video_view">
+
+        <!--cast video-->
+        <ImageView
+            android:id="@+id/video_cast_remote"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/common_button_bg"
+            android:contentDescription="@null"
+            android:foreground="?android:selectableItemBackground"
+            android:padding="4dp"
+            android:src="@drawable/cast"
+            app:layout_constraintBottom_toTopOf="@id/video_cast_add"
+            app:layout_constraintEnd_toEndOf="@id/video_cast_add"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/video_cast_local"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/common_button_bg"
+            android:contentDescription="@null"
+            android:foreground="?android:selectableItemBackground"
+            android:padding="7dp"
+            android:src="@drawable/cast_phone"
+            app:layout_constraintBottom_toTopOf="@id/video_cast_mute"
+            app:layout_constraintRight_toRightOf="@id/video_cast_mute"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--operation-->
+        <ImageView
+            android:id="@+id/video_cast_previous"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/common_button_bg"
+            android:contentDescription="@null"
+            android:foreground="?android:selectableItemBackground"
+            android:src="@drawable/cast_previous"
+            app:layout_constraintBottom_toTopOf="@id/video_cast_position"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/video_cast_pause"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/video_cast_pause"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/common_button_bg"
+            android:contentDescription="@null"
+            android:foreground="?android:selectableItemBackground"
+            android:src="@drawable/cast_play"
+            app:layout_constraintBottom_toBottomOf="@id/video_cast_previous"
+            app:layout_constraintLeft_toRightOf="@id/video_cast_previous"
+            app:layout_constraintRight_toLeftOf="@id/video_cast_next"
+            app:layout_constraintTop_toTopOf="@id/video_cast_previous" />
+
+        <ImageView
+            android:id="@+id/video_cast_next"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/common_button_bg"
+            android:contentDescription="@null"
+            android:foreground="?android:selectableItemBackground"
+            android:src="@drawable/cast_next"
+            app:layout_constraintBottom_toBottomOf="@id/video_cast_pause"
+            app:layout_constraintLeft_toRightOf="@id/video_cast_pause"
+            app:layout_constraintRight_toLeftOf="@id/video_cast_stop"
+            app:layout_constraintTop_toTopOf="@id/video_cast_pause" />
+
+        <ImageView
+            android:id="@+id/video_cast_stop"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/common_button_bg"
+            android:contentDescription="@null"
+            android:foreground="?android:selectableItemBackground"
+            android:padding="4dp"
+            android:src="@drawable/cast_stop"
+            app:layout_constraintBottom_toBottomOf="@id/video_cast_next"
+            app:layout_constraintLeft_toRightOf="@id/video_cast_next"
+            app:layout_constraintRight_toLeftOf="@id/video_cast_mute"
+            app:layout_constraintTop_toTopOf="@id/video_cast_next" />
+
+        <ImageView
+            android:id="@+id/video_cast_mute"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/common_button_bg"
+            android:contentDescription="@null"
+            android:foreground="?android:selectableItemBackground"
+            android:padding="4dp"
+            android:src="@drawable/cast_mute"
+            app:layout_constraintBottom_toBottomOf="@id/video_cast_stop"
+            app:layout_constraintLeft_toRightOf="@id/video_cast_stop"
+            app:layout_constraintRight_toLeftOf="@id/video_cast_add"
+            app:layout_constraintTop_toTopOf="@id/video_cast_stop" />
+
+        <ImageView
+            android:id="@+id/video_cast_add"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/common_button_bg"
+            android:contentDescription="@null"
+            android:foreground="?android:selectableItemBackground"
+            android:padding="4dp"
+            android:src="@drawable/cast_add"
+            app:layout_constraintBottom_toBottomOf="@id/video_cast_next"
+            app:layout_constraintLeft_toRightOf="@id/video_cast_mute"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/video_cast_next" />
+
+        <!--forward&rewind-->
+        <ImageView
+            android:id="@+id/video_cast_slow"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/common_button_bg"
+            android:contentDescription="@null"
+            android:foreground="?android:selectableItemBackground"
+            android:padding="4dp"
+            android:src="@drawable/cast_slow"
+            app:layout_constraintBottom_toTopOf="@id/video_cast_position"
+            app:layout_constraintLeft_toLeftOf="@id/video_cast_previous"
+            app:layout_constraintTop_toBottomOf="@id/video_cast_previous" />
+
+        <ImageView
+            android:id="@+id/video_cast_fast"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/common_button_bg"
+            android:contentDescription="@null"
+            android:foreground="?android:selectableItemBackground"
+            android:padding="4dp"
+            android:src="@drawable/cast_fast"
+            app:layout_constraintBottom_toTopOf="@id/video_cast_position"
+            app:layout_constraintLeft_toLeftOf="@id/video_cast_pause"
+            app:layout_constraintTop_toBottomOf="@id/video_cast_pause" />
+
+        <TextView
+            android:id="@+id/video_cast_position"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:gravity="center"
+            android:minWidth="90dp"
+            android:text="--:--/--:--"
+            android:textColor="#ffffff"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:ignore="HardcodedText,SpUsage"
+            tools:text="00:00/10:00" />
+
+        <SeekBar
+            android:id="@+id/video_cast_seekbar"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:progressBackgroundTint="@android:color/darker_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/video_cast_position"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:progress="50" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
